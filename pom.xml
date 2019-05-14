@@ -8,12 +8,12 @@
   <artifactId>follow-parent</artifactId>
   <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
-  <modules>
-    <module>../follow-api</module>
-  </modules>
+    <modules>
+        <module>follow-api</module>
+    </modules>
 
 
-  <properties>
+    <properties>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
