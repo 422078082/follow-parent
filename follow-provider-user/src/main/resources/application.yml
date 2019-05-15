@@ -1,4 +1,12 @@
 server:
   port: 8001
 mybatis:
-  config-location:
+  config-location: classpath: mybatis/mybatis.cfg.xml #mybatis配置文件的路径加载
+  type-aliases-package: com.follow.entity
+  mapper-locations:
+    - classpath: mybatis/mapper/**/*.xml
+spring:
+  application:
+    name: microsespringcloud-user
+  datasource:
+    type:
