@@ -3,6 +3,7 @@ package com.follow;
 import static org.junit.Assert.assertTrue;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.follow.entity.User;
 import com.follow.mapper.UserMapper;
@@ -33,8 +34,17 @@ public class AppTest
 
     @Test
     public void testSelectList() {
+       //EntityWrapper<User> ew = new EntityWrapper<>();
         List<User> userList = userMapper.selectList(null);
         System.out.println(userList);
+    }
+    @Test
+    public void dete(){
+        QueryWrapper<User> ew = new QueryWrapper<User>();
+        ew.eq("id","1");
+       // EntityWrapper<User> ew = new EntityWrapper<>();
+     //   EntityWrapper<User> ew = new EntityWrapper<>();
+        userMapper.delete(ew);
     }
 
 
