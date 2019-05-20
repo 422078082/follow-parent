@@ -6,10 +6,7 @@ import com.follow.entity.User;
 import com.follow.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,12 +23,17 @@ public class UserController {
         QueryWrapper qw = new QueryWrapper();
         return iUserService.selectList(qw);
     }
-    @RequestMapping(value="insertuser/{username}/{password}",method =RequestMethod.GET)
-    public void insertUser(@PathVariable String username,@PathVariable String password){
-        User user= new User();
-        user.setPassword(password);
-        user.setUsername(username);
-        iUserService.save(user);
+    @RequestMapping(value="/insertuser",method =RequestMethod.GET)
+    public boolean insertUser(@RequestBody User user){
+       // User user= new User();
+        user.setPassword(user.getPassword());
+        user.setUsername(user.getUsername());
+        return iUserService.save(user);
+    }
+
+    @RequestMapping(value="/getOneUser/{id}",method = RequestMethod.GET)
+    public User getOneUser(@PathVariable String id ){
+       return iUserService.getById(id);
     }
 
 }
