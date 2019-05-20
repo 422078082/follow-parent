@@ -11,6 +11,7 @@
     <modules>
         <module>follow-api</module>
       <module>follow-provider-user</module>
+        <module>follow-comsumer-user</module>
     </modules>
 
 
