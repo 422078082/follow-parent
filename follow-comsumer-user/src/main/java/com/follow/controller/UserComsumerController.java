@@ -28,7 +28,7 @@ public class UserComsumerController {
 
     @RequestMapping(value="/comsumer/getOneUser/{id}",method = RequestMethod.GET)
     public User getOneUser(@PathVariable String id ){
-        return restTemplate.getForObject(Rest_Url_Prefix+"/getOneUser"+id,User.class);
+        return restTemplate.getForObject(Rest_Url_Prefix+"/getOneUser/"+id,User.class);
     }
 
 }
