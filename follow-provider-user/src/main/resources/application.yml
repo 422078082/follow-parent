@@ -33,3 +33,9 @@ eureka:
   instance:
     instance-id: icrosespringcloud-user-8001
     prefer-ip-address: true
+
+info:
+  app.name: follow-user-provider
+  company.name: www.cht.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
