@@ -3,9 +3,10 @@ server:
 
 eureka:
   instance:
-    hostname: localhost #eureka服务端的名称
+    hostname: www.cht7003.cn #eureka服务端的名称
   client:
     register-with-eureka: false #自己不向注册中心注册自己
     fetch-registry: false #表示自己就是注册中心
     service-url:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+      #defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+       defaultZone: http://www.cht7001.cn:7001/eureka/,http://www.cht7002.cn:7002/eureka/
