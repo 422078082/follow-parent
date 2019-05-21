@@ -12,7 +12,9 @@
         <module>follow-api</module>
       <module>follow-provider-user</module>
         <module>follow-comsumer-user</module>
-        <module>follow-user-erueka</module>
+        <module>follow-user-erueka-7001</module>
+      <module>follow-user-erueka-7002</module>
+      <module>follow-user-erueka-7003</module>
     </modules>
 
 
