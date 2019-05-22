@@ -11,7 +11,8 @@ import java.util.List;
 @RestController
 public class UserComsumerController {
 
-    private static final String Rest_Url_Prefix="http://localhost:8001";
+   // private static final String Rest_Url_Prefix="http://localhost:8001";
+    private static final String Rest_Url_Prefix="http://MICROSESPRINGCLOUD-USER";
 
     @Autowired
     private RestTemplate restTemplate;

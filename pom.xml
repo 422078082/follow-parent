@@ -10,11 +10,13 @@
   <version>1.0-SNAPSHOT</version>
     <modules>
         <module>follow-api</module>
-      <module>follow-provider-user</module>
+      <module>follow-provider-user-8001</module>
         <module>follow-comsumer-user</module>
         <module>follow-user-erueka-7001</module>
       <module>follow-user-erueka-7002</module>
       <module>follow-user-erueka-7003</module>
+        <module>follow-provider-user-8002</module>
+      <module>follow-provider-user-8003</module>
     </modules>
 
 
@@ -148,7 +150,15 @@
           <artifactId>spring-cloud-starter-eureka-server</artifactId>
           <version>1.4.6.RELEASE</version>
         </dependency>
+
+        <dependency>
+          <groupId>org.springframework.cloud</groupId>
+          <artifactId>spring-cloud-starter-ribbon</artifactId>
+          <version>1.4.6.RELEASE</version>
+        </dependency>
+
       </dependencies>
+
   </dependencyManagement>
 
 <build>
