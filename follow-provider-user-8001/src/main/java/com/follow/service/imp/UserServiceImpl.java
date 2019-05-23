@@ -18,9 +18,9 @@ import java.util.List;
 
 public class UserServiceImpl  extends ServiceImpl<UserMapper, User> implements IUserService{
 
-    /*@Autowired
-    private UserMapper userMapper;*/
-
+   /* @Autowired
+    private UserMapper userMapper;
+*/
     @Override
     public List<User> selectList(Wrapper<User> queryWrapper) {
        // EntityWrapper<User> ew = new EntityWrapper<>();

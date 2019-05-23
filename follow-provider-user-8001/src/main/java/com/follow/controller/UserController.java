@@ -23,7 +23,7 @@ public class UserController {
         QueryWrapper qw = new QueryWrapper();
         return iUserService.selectList(qw);
     }
-    @RequestMapping(value="/insertuser",method =RequestMethod.GET)
+    @RequestMapping(value="/insertuser",method =RequestMethod.POST)
     public boolean insertUser(@RequestBody User user){
        // User user= new User();
         user.setPassword(user.getPassword());

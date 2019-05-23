@@ -2,6 +2,7 @@ package com.follow.controller;
 
 
 import com.follow.entity.User;
+import com.follow.service.user.api.UserServiceApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -11,10 +12,13 @@ import java.util.List;
 @RestController
 public class UserComsumerController {
 
-   // private static final String Rest_Url_Prefix="http://localhost:8001";
-    private static final String Rest_Url_Prefix="http://MICROSESPRINGCLOUD-USER";
+  @Autowired
+  private UserServiceApi userServiceApi;
 
-    @Autowired
+   // private static final String Rest_Url_Prefix="http://localhost:8001";
+   // private static final String Rest_Url_Prefix="http://MICROSESPRINGCLOUD-USER";
+
+  /*  @Autowired
     private RestTemplate restTemplate;
 
     @RequestMapping(value = "/comsumer/selectList",method = RequestMethod.GET)
@@ -22,7 +26,7 @@ public class UserComsumerController {
        // QueryWrapper qw = new QueryWrapper();
         return restTemplate.getForObject(Rest_Url_Prefix+"/selectList",List.class);
     }
-    @RequestMapping(value="/comsumer/insertuser",method =RequestMethod.GET)
+    @RequestMapping(value="/comsumer/insertuser",method =RequestMethod.POST)
     public boolean insertUser(@RequestBody User user){
     return restTemplate.postForObject(Rest_Url_Prefix+"/insertuser/",user, Boolean.class);
     }
@@ -30,6 +34,23 @@ public class UserComsumerController {
     @RequestMapping(value="/comsumer/getOneUser/{id}",method = RequestMethod.GET)
     public User getOneUser(@PathVariable String id ){
         return restTemplate.getForObject(Rest_Url_Prefix+"/getOneUser/"+id,User.class);
-    }
+    }*/
+
+     @RequestMapping(value = "/comsumer/selectList")
+     public List<User> selectList(){
+      // QueryWrapper qw = new QueryWrapper();
+      return this.userServiceApi.selectList();
+     }
+     @RequestMapping(value="/comsumer/insertuser")
+     public boolean insertUser(@RequestBody User user){
+
+         return this.userServiceApi.insertUser(user);
+     }
+
+     @RequestMapping(value="/comsumer/getOneUser/{id}")
+     public User getOneUser(@PathVariable String id ){
+
+         return this.userServiceApi.getOneUser(id);
+     }
 
 }
