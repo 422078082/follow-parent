@@ -50,18 +50,18 @@
         </dependency>
         <!--boot版本-->
 
-        <dependency>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-starter-parent</artifactId>
-          <version>${springbootparent.version}</version>
-        </dependency>
-        <dependency>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-dependencies</artifactId>
-          <version>${springboot.version}</version>
-          <type>pom</type>
-          <scope>import</scope>
-        </dependency>
+          <!--  <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-parent</artifactId>
+           <version>${springbootparent.version}</version>
+         </dependency>-->
+         <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-dependencies</artifactId>
+           <version>${springboot.version}</version>
+           <type>pom</type>
+           <scope>import</scope>
+         </dependency>
         <!--数据库驱动-->
         <dependency>
           <groupId>mysql</groupId>

@@ -2,14 +2,14 @@ package com.follow.controller;
 
 
 import com.follow.entity.User;
-import com.follow.service.user.api.UserServiceApi;
+import com.follow.user.api.UserServiceApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
 @RestController
+
 public class UserComsumerController {
 
   @Autowired
@@ -48,8 +48,8 @@ public class UserComsumerController {
      }
 
      @RequestMapping(value="/comsumer/getOneUser/{id}")
-     public User getOneUser(@PathVariable String id ){
-
+     public User getOneUser(@PathVariable("id") String id ){
+         System.out.println("id="+id);
          return this.userServiceApi.getOneUser(id);
      }
 
