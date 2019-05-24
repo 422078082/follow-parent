@@ -1,9 +1,13 @@
 server:
   port: 80
-  #context-path: /
+  context-path: /
 eureka:
   client:
     register-with-eureka: false
     service-url:
       defaultZone: http://www.cht7001.cn:7001/eureka/,http://www.cht7002.cn:7002/eureka/,http://www.cht7003.cn:7003/eureka/
+
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
 
