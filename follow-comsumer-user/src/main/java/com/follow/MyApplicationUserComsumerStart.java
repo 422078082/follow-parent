@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.ComponentScan;
 
 
@@ -16,7 +17,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableEurekaClient
 //@RibbonClient(name = "MICROSESPRINGCLOUD-USER",configuration = MyRule.class)
 @EnableFeignClients(basePackages = {"com.follow.user"})
-
+@EnableZuulProxy
 public class MyApplicationUserComsumerStart
 {
     public static void main( String[] args )
