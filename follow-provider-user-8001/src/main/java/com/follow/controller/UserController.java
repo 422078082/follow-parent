@@ -4,6 +4,7 @@ package com.follow.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.follow.entity.User;
 import com.follow.service.IUserService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.web.bind.annotation.*;
@@ -32,8 +33,19 @@ public class UserController {
     }
 
     @RequestMapping(value="/getOneUser/{id}",method = RequestMethod.GET)
+    @HystrixCommand(fallbackMethod = "get_Message")
     public User getOneUser(@PathVariable String id ){
-       return iUserService.getById(id);
+        User user =iUserService.getById(id);
+        if(null ==user){
+                throw new RuntimeException("当前id："+id+"没有对应的信息");
+        }
+        return iUserService.getById(id);
+
+    }
+
+    public User get_Message(@PathVariable("id") String id){
+
+        return new User().setId(Long.valueOf(id)).setUsername("没有这个用户").setPassword("密码不能告诉你");
     }
 
 }

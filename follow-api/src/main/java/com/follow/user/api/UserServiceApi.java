@@ -1,6 +1,7 @@
 package com.follow.user.api;
 
 import com.follow.entity.User;
+import com.follow.user.fallback.UserServcieFallBack;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
-@FeignClient(value = "MICROSESPRINGCLOUD-USER")
+@FeignClient(value = "MICROSESPRINGCLOUD-USER",fallbackFactory = UserServcieFallBack.class)
 public interface UserServiceApi {
     @RequestMapping(value = "/selectList",method = RequestMethod.GET)
     public List<User> selectList();

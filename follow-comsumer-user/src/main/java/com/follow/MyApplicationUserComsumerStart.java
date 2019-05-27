@@ -15,7 +15,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @EnableEurekaClient
 //@RibbonClient(name = "MICROSESPRINGCLOUD-USER",configuration = MyRule.class)
-@EnableFeignClients(basePackages = {"com.follow.user.api"})
+@EnableFeignClients(basePackages = {"com.follow.user"})
 
 public class MyApplicationUserComsumerStart
 {
