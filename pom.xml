@@ -17,6 +17,7 @@
       <module>follow-user-erueka-7003</module>
         <module>follow-provider-user-8002</module>
       <module>follow-provider-user-8003</module>
+        <module>follow-config</module>
     </modules>
 
 

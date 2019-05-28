@@ -1,0 +1,5 @@
+server:
+  port: 3344
+spring:
+  application:
+    name: follow-config

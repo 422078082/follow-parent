@@ -13,7 +13,7 @@ import java.util.List;
 
 @FeignClient(value = "MICROSESPRINGCLOUD-USER",fallbackFactory = UserServcieFallBack.class)
 public interface UserServiceApi {
-    @RequestMapping(value = "/selectList",method = RequestMethod.GET)
+   @RequestMapping(value = "/selectList",method = RequestMethod.GET)
     public List<User> selectList();
     @RequestMapping(value="/insertuser",method =RequestMethod.POST)
     public boolean insertUser(@RequestBody User user);

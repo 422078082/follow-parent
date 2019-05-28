@@ -36,7 +36,7 @@ public class UserComsumerController {
         return restTemplate.getForObject(Rest_Url_Prefix+"/getOneUser/"+id,User.class);
     }*/
 
-     @RequestMapping(value = "/comsumer/selectList")
+/*     @RequestMapping(value = "/comsumer/selectList")
      public List<User> selectList(){
       // QueryWrapper qw = new QueryWrapper();
       return this.userServiceApi.selectList();
@@ -51,6 +51,6 @@ public class UserComsumerController {
      public User getOneUser(@PathVariable("id") String id ){
          System.out.println("id="+id);
          return this.userServiceApi.getOneUser(id);
-     }
+     }*/
 
 }
