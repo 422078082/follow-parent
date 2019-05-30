@@ -18,6 +18,7 @@
         <module>follow-provider-user-8002</module>
       <module>follow-provider-user-8003</module>
         <module>follow-config</module>
+      <module>follow-config-client</module>
     </modules>
 
 
