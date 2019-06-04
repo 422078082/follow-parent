@@ -1,0 +1,8 @@
+spring:
+  cloud:
+    config:
+      name: follow-eureka7001
+      uri: http://localhost:3344/
+      profile: dev
+      label: master
+

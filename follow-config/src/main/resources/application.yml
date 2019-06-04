@@ -11,3 +11,5 @@ spring:
           uri: https://github.com/422078082/follow-config.git
           username: 422078082@qq.com
           password: gxcht123456
+encrypt:
+  key: foo
