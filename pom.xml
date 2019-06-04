@@ -19,6 +19,7 @@
       <module>follow-provider-user-8003</module>
         <module>follow-config</module>
       <module>follow-config-client</module>
+        <module>follow-commom</module>
     </modules>
 
 
