@@ -21,4 +21,10 @@ public class ResponseStatusCode {
      * 自定义异常
      */
     public static final int ARGUMENT_EXCEPTION_404= 404;
+
+    /**
+     * 服务器异常
+     */
+
+    public static final  int ADFAULT_SERVICE_ERROR=505;
 }

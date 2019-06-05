@@ -35,6 +35,8 @@ public class ResponseResult<T> implements Serializable {
         return new ResponseResult(status, msg, url, host);
     }
 
+
+
     public ResponseResult() {
     }
 

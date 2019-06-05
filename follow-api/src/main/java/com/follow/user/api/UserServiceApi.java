@@ -1,13 +1,11 @@
 package com.follow.user.api;
 
 import com.follow.entity.User;
+import com.follow.result.ResponseResult;
 import com.follow.user.fallback.UserServcieFallBack;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,4 +19,6 @@ public interface UserServiceApi {
     @RequestMapping(value="/getOneUser/{id}",method = RequestMethod.GET)
     public User getOneUser(@PathVariable("id") String id );
 
+  @GetMapping(value="/selectListPage")
+   public ResponseResult<User> selectListPage(int pageNo , int pageSize);
 }
