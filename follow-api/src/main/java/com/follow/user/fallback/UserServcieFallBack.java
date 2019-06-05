@@ -27,7 +27,7 @@ public class UserServcieFallBack implements FallbackFactory<UserServiceApi> {
 
             @Override
             public User getOneUser(String id) {
-                return new User().setId(Long.valueOf(id)).setUsername("没有这个用户##").setPassword("密码不能告诉你");
+                return new User().setId(Integer.valueOf(id)).setUsername("没有这个用户##").setPassword("密码不能告诉你");
             }
 
             @Override

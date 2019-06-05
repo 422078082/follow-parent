@@ -10,4 +10,5 @@ import java.util.List;
 
 public interface IUserService extends IService<User> {
     List<User> selectList(@Param("ew") Wrapper<User> queryWrapper);
+
 }

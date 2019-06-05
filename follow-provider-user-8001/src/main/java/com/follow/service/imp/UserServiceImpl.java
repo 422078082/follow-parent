@@ -26,4 +26,5 @@ public class UserServiceImpl  extends ServiceImpl<UserMapper, User> implements I
        // EntityWrapper<User> ew = new EntityWrapper<>();
         return baseMapper.selectList(queryWrapper);
     }
+
 }

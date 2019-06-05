@@ -38,6 +38,20 @@ public class AppTest
         List<User> userList = userMapper.selectList(null);
         System.out.println(userList);
     }
+
+    @Test
+    public void save() {
+      /*  //EntityWrapper<User> ew = new EntityWrapper<>();
+        List<User> userList = userMapper.selectList(null);
+        System.out.println(userList);*/
+      User  user = new User();
+
+      user.setId(1);
+      user.setUsername("admin");
+      user.setPassword("admin");
+        userMapper.insert(user);
+   }
+
     @Test
     public void dete(){
         QueryWrapper<User> ew = new QueryWrapper<User>();

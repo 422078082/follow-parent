@@ -24,23 +24,24 @@ public class User implements Serializable {
     /**
      * 主键
      */
-    @TableId(value = "id", type = IdType.AUTO)
-    private Long id;
+
+    private int id;
     /**
      * 用户名
      */
 
-    @TableField(value = "username")
+
+
     private String username;
     /**
      * 用户登陆密码
      */
-    @TableField(value = "password")
+
     private String    password;
 
 
 public static void main(String args[]){
     User user= new User();
-    user.setId(1l).setPassword("1").setPassword("1");
+    user.setId(1).setPassword("1").setPassword("1");
 }
 }
