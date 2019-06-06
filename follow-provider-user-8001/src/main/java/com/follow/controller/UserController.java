@@ -23,6 +23,17 @@ public class UserController {
     @Autowired
     private IUserService iUserService;
 
+
+    /**
+     * 用户登陆
+     */
+    @PostMapping(value = "login")
+    public ResponseResult login(@ApiParam(name = "username",value = "用户名",required = true) @RequestParam(name = "username", required = true) String username,
+                                @ApiParam(name = "password", value = "password",required = true) @RequestParam(name = "password", required = true) String password){
+
+        return iUserService.login(username,password);
+    }
+
     /**
      * 查询
      */

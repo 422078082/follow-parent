@@ -34,6 +34,11 @@ public class UserServcieFallBack implements FallbackFactory<UserServiceApi> {
             public ResponseResult<User> selectListPage(int pageNo, int pageSize) {
                 return DefaultFallBack.defaultFallBack();
             }
+
+            @Override
+            public ResponseResult login(String username, String password) {
+                return DefaultFallBack.defaultFallBack();
+            }
         };
     }
 }
