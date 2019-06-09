@@ -1,6 +1,44 @@
+server:
+  port: 80
+  context-path: /
+
 spring:
   application:
-    name: follow-comsumer
-management:
-  security:
-    enabled: false
+    name: MICROSESPRINGCLOUD-USER
+feign:
+  hystrix:
+    enabled: true
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://www.cht7001.cn:7001/eureka/,http://www.cht7002.cn:7002/eureka/,http://www.cht7003.cn:7003/eureka/
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+  eager-load:
+    enabled: true
+  eureka:
+    enabled: true
+zuul:
+  ignored-services: "*"
+  prefix: /api
+  routes:
+    user-service:
+        path: /user-service/**
+        serviceId: user-service
+  host:
+    connect-timeout-millis: 3000
+    socket-timeout-millis: 3000
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeout-in-milliseconds: 3000
+
+
+
+

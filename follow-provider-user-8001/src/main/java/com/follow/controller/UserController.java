@@ -44,7 +44,7 @@ public class UserController {
     }
 
     @GetMapping(value="/selectListPage")
-    public ResponseResult<User> selectListPage(int pageNo , int pageSize){
+    public ResponseResult<User> selectListPage(@RequestParam("pageNo") int pageNo ,@RequestParam("pageSize")  int pageSize){
 
         ResponseResult result = new ResponseResult();
         QueryWrapper qw = new QueryWrapper();

@@ -6,6 +6,7 @@ import com.follow.result.ResponseResult;
 import com.follow.user.api.UserServiceApi;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -31,14 +32,14 @@ public class UserServcieFallBack implements FallbackFactory<UserServiceApi> {
             }
 
             @Override
-            public ResponseResult<User> selectListPage(int pageNo, int pageSize) {
+            public ResponseResult<User> selectListPage(@RequestParam("pageNo") int pageNo , @RequestParam("pageSize")  int pageSize) {
                 return DefaultFallBack.defaultFallBack();
             }
 
-            @Override
+          /*  @Override
             public ResponseResult login(String username, String password) {
                 return DefaultFallBack.defaultFallBack();
-            }
+            }*/
         };
     }
 }

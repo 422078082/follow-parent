@@ -1,8 +1,0 @@
-spring:
-  cloud:
-    config:
-      name: follow-comsumer
-      uri: http://localhost:3344/
-      profile: dev
-      label: master
-
