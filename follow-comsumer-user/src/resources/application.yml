@@ -4,33 +4,36 @@ server:
 
 spring:
   application:
-    name: MICROSESPRINGCLOUD-USER
-feign:
-  hystrix:
-    enabled: true
+    name: MICROSESPRINGCLOUD-USER_COMSUMER
+
 eureka:
   client:
-    register-with-eureka: false
-    fetch-registry: false
     service-url:
       defaultZone: http://www.cht7001.cn:7001/eureka/,http://www.cht7002.cn:7002/eureka/,http://www.cht7003.cn:7003/eureka/
+    instance:
+      prefer-ip-address:  true #显示IP的地址
 ribbon:
   ReadTimeout: 60000
   ConnectTimeout: 60000
-  eager-load:
-    enabled: true
   eureka:
     enabled: true
+  eager-load:
+    enabled: true
+feign:
+  hystrix:
+    enabled: true
+
 zuul:
-  ignored-services: "*"
+  host:
+    connect-timeout-millis: 60000
+    socket-timeout-millis: 60000
   prefix: /api
+  ignored-services: "*"
   routes:
     user-service:
         path: /user-service/**
-        serviceId: user-service
-  host:
-    connect-timeout-millis: 3000
-    socket-timeout-millis: 3000
+        serviceId: microsespringcloud-user
+
 hystrix:
   command:
     default:

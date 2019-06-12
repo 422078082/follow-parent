@@ -36,10 +36,10 @@ public class UserServcieFallBack implements FallbackFactory<UserServiceApi> {
                 return DefaultFallBack.defaultFallBack();
             }
 
-          /*  @Override
+           @Override
             public ResponseResult login(String username, String password) {
                 return DefaultFallBack.defaultFallBack();
-            }*/
+            }
         };
     }
 }

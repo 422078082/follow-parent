@@ -38,7 +38,7 @@ public class UserServiceImpl  extends ServiceImpl<UserMapper, User> implements I
         if(null == user){
                 return ResponseResult.ok("没有些用户","");
         }else{
-            return ResponseResult.ok(user,"");
+            return ResponseResult.ok("查询成功",user,"");
             //return ResponseResult.ok(user,"");
         }
        // return null;

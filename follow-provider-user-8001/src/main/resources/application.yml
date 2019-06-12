@@ -1,6 +1,6 @@
 spring:
   application:
-    name: follow-provideruser8001
+    name: microsespringcloud-user
 management:
   security:
     enabled: false
