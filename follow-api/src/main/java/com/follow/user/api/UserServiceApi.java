@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(value = "MICROSESPRINGCLOUD-USER",fallbackFactory = UserServcieFallBack.class)
+@FeignClient(name = "microsespringcloud-user",fallback = UserServcieFallBack.class)
 public interface UserServiceApi {
    @RequestMapping(value = "/selectList",method = RequestMethod.GET)
     public List<User> selectList();

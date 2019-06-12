@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @Component
-public class UserServcieFallBack implements FallbackFactory<UserServiceApi> {
-    @Override
-    public UserServiceApi create(Throwable throwable) {
-        return new UserServiceApi(){
+public class UserServcieFallBack implements UserServiceApi {
+
 
             @Override
             public List<User> selectList() {
@@ -40,6 +38,5 @@ public class UserServcieFallBack implements FallbackFactory<UserServiceApi> {
             public ResponseResult login(String username, String password) {
                 return DefaultFallBack.defaultFallBack();
             }
-        };
-    }
+
 }
