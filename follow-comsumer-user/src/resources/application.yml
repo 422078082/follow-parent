@@ -12,6 +12,8 @@ eureka:
       defaultZone: http://www.cht7001.cn:7001/eureka/,http://www.cht7002.cn:7002/eureka/,http://www.cht7003.cn:7003/eureka/
     instance:
       prefer-ip-address:  true #显示IP的地址
+    register-with-eureka: false
+
 ribbon:
   ReadTimeout: 60000
   ConnectTimeout: 60000

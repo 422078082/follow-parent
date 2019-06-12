@@ -32,7 +32,7 @@ public class UserServcieFallBack implements FallbackFactory<UserServiceApi> {
             }
 
             @Override
-            public ResponseResult<User> selectListPage(@RequestParam("pageNo") int pageNo , @RequestParam("pageSize")  int pageSize) {
+            public ResponseResult<User> selectListPage( int pageNo , int pageSize) {
                 return DefaultFallBack.defaultFallBack();
             }
 
