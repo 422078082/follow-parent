@@ -8,18 +8,21 @@
   <artifactId>follow-parent</artifactId>
   <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
-    <modules>
+  <modules>
         <module>follow-api</module>
-      <module>follow-provider-user-8001</module>
-        <module>follow-comsumer-user</module>
+       <module>follow-provider-user-8001</module>
+        <!--<module>follow-comsumer-user</module>-->
         <module>follow-user-erueka-7001</module>
-      <module>follow-user-erueka-7002</module>
-      <module>follow-user-erueka-7003</module>
-        <module>follow-provider-user-8002</module>
+        <module>follow-user-erueka-7002</module>
+        <module>follow-user-erueka-7003</module>
+
+      <module>follow-config</module>
+      <!--
+       <module>follow-provider-user-8002</module>
       <module>follow-provider-user-8003</module>
         <module>follow-config</module>
       <module>follow-config-client</module>
-        <module>follow-commom</module>
+        <module>follow-commom</module>-->
     </modules>
 
 
@@ -28,7 +31,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <springboot.version>1.5.9.RELEASE</springboot.version>
+      <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
+      <springboot.version>2.1.2.RELEASE</springboot.version>
     <mysql.version>5.1.45</mysql.version>
     <druid.version>1.1.6</druid.version>
     <mybatis-spring.version>2.0.1</mybatis-spring.version>
@@ -36,10 +40,22 @@
     <log4j.version>1.2.17</log4j.version>
     <junit.version>4.12</junit.version>
       <lombok.version>1.18.8</lombok.version>
-      <feign.version>1.4.6.RELEASE</feign.version>
       <mybatisplus.version>3.1.1</mybatisplus.version>
-      <springbootparent.version>2.1.5.RELEASE</springbootparent.version>
+      <eureka.version>2.1.0.RELEASE</eureka.version>
+      <open-feign.version>2.1.0.RELEASE</open-feign.version>
+      <feignhttpclient.version>10.2.0</feignhttpclient.version>
+      <hystrix.version>1.4.6.RELEASE</hystrix.version>
+      <gson.version>2.8.5</gson.version>
   </properties>
+
+
+ <!--<dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>-->
 
   <dependencyManagement>
       <dependencies>
@@ -47,9 +63,42 @@
         <dependency>
           <groupId>org.springframework.cloud</groupId>
           <artifactId>spring-cloud-dependencies</artifactId>
-          <version>Dalston.SR1</version>
+          <version>${spring-cloud.version}</version>
           <type>pom</type>
           <scope>import</scope>
+        </dependency>
+
+
+      <!--服务治理-->
+        <dependency>
+          <groupId>org.springframework.cloud</groupId>
+          <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+          <version>${eureka.version}</version>
+        </dependency>
+
+        <dependency>
+          <groupId>org.springframework.cloud</groupId>
+          <artifactId>spring-cloud-starter-openfeign</artifactId>
+          <version>${open-feign.version}</version>
+        </dependency>
+
+        <dependency>
+          <groupId>io.github.openfeign</groupId>
+          <artifactId>feign-httpclient</artifactId>
+          <version>${feignhttpclient.version}</version>
+        </dependency>
+
+        <dependency>
+          <groupId>org.springframework.cloud</groupId>
+          <artifactId>spring-cloud-starter-ribbon</artifactId>
+          <version>1.4.6.RELEASE</version>
+        </dependency>
+
+
+        <dependency>
+          <groupId>org.springframework.cloud</groupId>
+          <artifactId>spring-cloud-starter-hystrix</artifactId>
+          <version>${hystrix.version}</version>
         </dependency>
         <!--boot版本-->
 
@@ -58,13 +107,7 @@
            <artifactId>spring-boot-starter-parent</artifactId>
            <version>${springbootparent.version}</version>
          </dependency>-->
-         <dependency>
-           <groupId>org.springframework.boot</groupId>
-           <artifactId>spring-boot-dependencies</artifactId>
-           <version>${springboot.version}</version>
-           <type>pom</type>
-           <scope>import</scope>
-         </dependency>
+
         <!--数据库驱动-->
         <dependency>
           <groupId>mysql</groupId>
@@ -84,7 +127,13 @@
           <version>${mybatis-spring.version}</version>
         </dependency>
 -->
-
+        <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-dependencies</artifactId>
+          <version>${springboot.version}</version>
+          <type>pom</type>
+          <scope>import</scope>
+        </dependency>
 
       <dependency>
           <groupId>com.baomidou</groupId>
@@ -130,11 +179,7 @@
           <scope>provided</scope>
         </dependency>
 
-        <dependency>
-          <groupId>org.springframework.cloud</groupId>
-          <artifactId>spring-cloud-starter-feign</artifactId>
-          <version>${feign.version}</version>
-        </dependency>
+
 
         <dependency>
           <groupId>io.springfox</groupId>
@@ -148,25 +193,12 @@
         </dependency>
 
 
-        <dependency>
-          <groupId>org.springframework.cloud</groupId>
-          <artifactId>spring-cloud-starter-eureka-server</artifactId>
-          <version>1.4.6.RELEASE</version>
-        </dependency>
 
         <dependency>
-          <groupId>org.springframework.cloud</groupId>
-          <artifactId>spring-cloud-starter-ribbon</artifactId>
-          <version>1.4.6.RELEASE</version>
+          <groupId>com.google.code.gson</groupId>
+          <artifactId>gson</artifactId>
+          <version>${gson.version}</version>
         </dependency>
-
-
-        <dependency>
-          <groupId>org.springframework.cloud</groupId>
-          <artifactId>spring-cloud-starter-hystrix</artifactId>
-          <version>1.4.6.RELEASE</version>
-        </dependency>
-
 
 
       </dependencies>

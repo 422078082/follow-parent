@@ -2,11 +2,12 @@ package com.follow.user.fallback;
 
 import com.follow.entity.User;
 import com.follow.result.DefaultFallBack;
-import com.follow.result.ResponseResult;
+import com.follow.result.ResponseData;
+
 import com.follow.user.api.UserServiceApi;
-import feign.hystrix.FallbackFactory;
+
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 import java.util.List;
 
@@ -30,12 +31,12 @@ public class UserServcieFallBack implements UserServiceApi {
             }
 
             @Override
-            public ResponseResult<User> selectListPage( int pageNo , int pageSize) {
+            public ResponseData selectListPage(int pageNo , int pageSize) {
                 return DefaultFallBack.defaultFallBack();
             }
 
            @Override
-            public ResponseResult login(String username, String password) {
+            public ResponseData login(String username, String password) {
                 return DefaultFallBack.defaultFallBack();
             }
 

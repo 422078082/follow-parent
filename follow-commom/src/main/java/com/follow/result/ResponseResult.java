@@ -34,6 +34,9 @@ public class ResponseResult<T> implements Serializable {
     public static ResponseResult fail(int status, String msg, String url, Long host) {
         return new ResponseResult(status, msg, url, host);
     }
+    public static ResponseResult fail_exception(int status, String msg, String url, Long host) {
+        return new ResponseResult(status, msg, url, host);
+    }
 
 
 

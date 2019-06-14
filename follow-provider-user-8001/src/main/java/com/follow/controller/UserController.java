@@ -5,20 +5,24 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.follow.entity.User;
-import com.follow.result.ResponseResult;
-import com.follow.result.ResponseStatusCode;
+import com.follow.result.*;
 import com.follow.service.IUserService;
+import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import io.swagger.annotations.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+
+import java.io.IOException;
 import java.util.List;
 
 @RestController
 @Api("用户操作类")
+@DefaultProperties(defaultFallback = "fallback")
+@Slf4j
 public class UserController {
     @Autowired
     private IUserService iUserService;
@@ -27,35 +31,43 @@ public class UserController {
     /**
      * 用户登陆
      */
+    @ApiOperation(value = "用户登录")
     @PostMapping(value = "login")
-    public ResponseResult login(@ApiParam(name = "username",value = "用户名",required = true) @RequestParam(name = "username", required = true) String username,
-                                @ApiParam(name = "password", value = "password",required = true) @RequestParam(name = "password", required = true) String password){
-
-        return iUserService.login(username,password);
+    @HystrixCommand(fallbackMethod = "fallback")
+    public ResponseData login(@ApiParam(name = "username",value = "用户名",required = true) @RequestParam(name = "username", required = true) String username,
+                              @ApiParam(name = "password", value = "password",required = true) @RequestParam(name = "password", required = true) String password)  throws IOException {
+        ResponseData  suc=null;
+        try {
+          suc = iUserService.login(username,password);
+        } catch (Exception e) {
+            log.error("查询用户失败",e);
+        }
+        return suc;
     }
 
     /**
      * 查询
      */
     @RequestMapping(value = "/selectList",method = RequestMethod.GET)
-    public List<User> selectList(){
+    public ResponseData selectList(){
+       // SuccessResponseData success = new SuccessResponseData();
         QueryWrapper qw = new QueryWrapper();
-        return iUserService.selectList(qw);
+        return ResponseData.success(iUserService.selectList(qw));
     }
 
     @GetMapping(value="/selectListPage")
-    public ResponseResult<User> selectListPage(@RequestParam("pageNo") int pageNo ,@RequestParam("pageSize")  int pageSize){
+    public ResponseData selectListPage(@RequestParam("pageNo") int pageNo ,@RequestParam("pageSize")  int pageSize){
 
         ResponseResult result = new ResponseResult();
         QueryWrapper qw = new QueryWrapper();
        // qw.eq("","");
         Page<User> page = new Page<>(pageNo,pageSize);
         IPage<User> pageUserList=iUserService.page(page,qw);
-        result.setData(pageUserList);
+  /*      result.setData(pageUserList);
         result.setMsg("查询成功");
-        result.setStatus(ResponseStatusCode.OK);
+        result.setStatus(ResponseStatusCode.OK);*/
        // result.s
-        return result;
+        return ResponseData.success(pageUserList);
     }
     @ApiOperation(value = "插入用户信息",notes = "将用户名和用户的密码信息插入到数据库中")
     @RequestMapping(value="/insertuser",method =RequestMethod.POST)
@@ -128,6 +140,13 @@ public class UserController {
     public User get_Message(@PathVariable("id") String id){
 
         return new User().setId(Integer.valueOf(id)).setUsername("没有这个用户").setPassword("密码不能告诉你");
+    }
+
+
+    public ResponseData fallback(@ApiParam(name = "username",value = "用户名",required = true) @RequestParam(name = "username", required = true) String username,
+                                 @ApiParam(name = "password", value = "password",required = true) @RequestParam(name = "password", required = true) String password) {
+      // e.printStackTrace();
+        return ResponseData.error("服务器繁忙，请稍后再试");
     }
 
 }

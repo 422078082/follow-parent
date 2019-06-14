@@ -26,5 +26,5 @@ public class ResponseStatusCode {
      * 服务器异常
      */
 
-    public static final  int ADFAULT_SERVICE_ERROR=505;
+    public static final  int ADFAULT_SERVICE_ERROR=500;
 }

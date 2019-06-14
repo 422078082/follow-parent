@@ -1,6 +1,6 @@
 server:
   port: 3344
-  #context-path: /
+
 spring:
   application:
     name: follow-config
@@ -13,3 +13,7 @@ spring:
           password: gxcht123456
 encrypt:
   key: foo
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false

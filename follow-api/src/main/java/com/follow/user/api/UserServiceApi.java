@@ -1,11 +1,13 @@
 package com.follow.user.api;
 
 import com.follow.entity.User;
-import com.follow.result.ResponseResult;
+import com.follow.result.ResponseData;
+
 import com.follow.user.fallback.UserServcieFallBack;
 import io.swagger.annotations.ApiParam;
-import org.springframework.cloud.netflix.feign.FeignClient;
-import org.springframework.cloud.netflix.ribbon.RibbonClient;
+
+
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,12 +23,12 @@ public interface UserServiceApi {
     public User getOneUser(@PathVariable("id") String id );
 
   @GetMapping(value="/selectListPage")
-   public ResponseResult<User> selectListPage(@RequestParam("pageNo") int pageNo ,@RequestParam("pageSize")  int pageSize);
+   public ResponseData selectListPage(@RequestParam("pageNo") int pageNo ,@RequestParam("pageSize")  int pageSize);
 
 
     @PostMapping(value = "login")
-    public ResponseResult login(@ApiParam(name = "username",value = "用户名",required = true) @RequestParam(name = "username", required = true) String username,
-                                @ApiParam(name = "password", value = "password",required = true) @RequestParam(name = "password", required = true) String password);
+    public ResponseData login(@ApiParam(name = "username",value = "用户名",required = true) @RequestParam(name = "username", required = true) String username,
+                              @ApiParam(name = "password", value = "password",required = true) @RequestParam(name = "password", required = true) String password);
 
 
 
