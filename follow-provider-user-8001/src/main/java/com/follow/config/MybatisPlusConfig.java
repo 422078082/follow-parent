@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import java.util.Properties;
 
 @Configuration
-@EnableTransactionManagement
-@MapperScan("com.follow.mapper.*")
+//@EnableTransactionManagement
+//@MapperScan("com.follow.mapper.*")
 public class MybatisPlusConfig {
 
     @Bean
