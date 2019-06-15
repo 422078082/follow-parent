@@ -11,7 +11,7 @@
   <modules>
         <module>follow-api</module>
        <module>follow-provider-user-8001</module>
-        <!--<module>follow-comsumer-user</module>-->
+       <module>follow-comsumer-user</module>
         <module>follow-user-erueka-7001</module>
         <module>follow-user-erueka-7002</module>
         <module>follow-user-erueka-7003</module>
@@ -21,8 +21,8 @@
        <module>follow-provider-user-8002</module>
       <module>follow-provider-user-8003</module>
         <module>follow-config</module>
-      <module>follow-config-client</module>
-        <module>follow-commom</module>-->
+      <module>follow-config-client</module>-->
+        <module>follow-commom</module>
     </modules>
 
 
@@ -100,6 +100,13 @@
           <artifactId>spring-cloud-starter-hystrix</artifactId>
           <version>${hystrix.version}</version>
         </dependency>
+
+        <dependency>
+          <groupId>org.springframework.cloud</groupId>
+          <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+          <version>2.0.2.RELEASE</version>
+        </dependency>
+
         <!--boot版本-->
 
           <!--  <dependency>
@@ -150,7 +157,7 @@
         <dependency>
           <groupId>com.github.pagehelper</groupId>
           <artifactId>pagehelper</artifactId>
-          <version>5.0.0</version>
+          <version>5.1.8</version>
         </dependency>
 
         <!--日志包-->
@@ -184,12 +191,12 @@
         <dependency>
           <groupId>io.springfox</groupId>
           <artifactId>springfox-swagger-ui</artifactId>
-          <version>2.7.0</version>
+          <version>2.9.2</version>
         </dependency>
         <dependency>
           <groupId>io.springfox</groupId>
           <artifactId>springfox-swagger2</artifactId>
-          <version>2.7.0</version>
+          <version>2.9.2</version>
         </dependency>
 
 
@@ -199,7 +206,11 @@
           <artifactId>gson</artifactId>
           <version>${gson.version}</version>
         </dependency>
-
+        <dependency>
+          <groupId>com.google.guava</groupId>
+          <artifactId>guava</artifactId>
+          <version>27.0.1-jre</version>
+        </dependency>
 
       </dependencies>
 
