@@ -1,4 +1,4 @@
-package com.follow.mapper;
+package com.follow.user.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.follow.entity.User;

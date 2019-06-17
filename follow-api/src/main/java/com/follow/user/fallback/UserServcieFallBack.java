@@ -1,8 +1,8 @@
 package com.follow.user.fallback;
 
 import com.follow.entity.User;
-import com.follow.result.DefaultFallBack;
-import com.follow.result.ResponseData;
+import com.follow.common.result.DefaultFallBack;
+import com.follow.common.result.ResponseData;
 
 import com.follow.user.api.UserServiceApi;
 
@@ -16,8 +16,8 @@ public class UserServcieFallBack implements UserServiceApi {
 
 
             @Override
-            public List<User> selectList() {
-                return null;
+            public ResponseData selectList() {
+                return DefaultFallBack.defaultFallBack();
             }
 
             @Override

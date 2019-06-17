@@ -1,7 +1,7 @@
 package com.follow.user.api;
 
 import com.follow.entity.User;
-import com.follow.result.ResponseData;
+import com.follow.common.result.ResponseData;
 
 import com.follow.user.fallback.UserServcieFallBack;
 import io.swagger.annotations.ApiParam;
@@ -15,7 +15,7 @@ import java.util.List;
 @FeignClient(name = "microsespringcloud-user",fallback = UserServcieFallBack.class)
 public interface UserServiceApi {
    @RequestMapping(value = "/selectList",method = RequestMethod.GET)
-    public List<User> selectList();
+    public ResponseData selectList();
     @RequestMapping(value="/insertuser",method =RequestMethod.POST)
     public boolean insertUser(@RequestBody User user);
 

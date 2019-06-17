@@ -37,6 +37,24 @@ eureka:
     instance-id: icrosespringcloud-user-8001
     prefer-ip-address: true
 
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeout-in-milliseconds: 3000
+      circuitBreaker:
+        enabled: true #开启熔断器
+        requestVolumeThreshold: 5 #触发熔断器的最小请求数
+        sleepWindowInMilliseconds: 30000 #触发熔断器后的关闭时间
+        errorThresholdPercentage: 50 #达到这个比例将关闭接口，直接走降级处理
+feign:
+  hystrix:
+    enabled: true #feign启用hystrix
+  httpclient:
+    enabled: true #使用httpclient
 info:
   app.name: follow-user-provider
   company.name: www.cht.com

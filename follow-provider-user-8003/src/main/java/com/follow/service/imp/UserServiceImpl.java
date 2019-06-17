@@ -1,4 +1,4 @@
-package com.follow.service.imp;
+package com.follow.user.service.imp;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
@@ -6,8 +6,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.follow.entity.User;
 
-import com.follow.mapper.UserMapper;
-import com.follow.service.IUserService;
+import com.follow.user.mapper.UserMapper;
+import com.follow.user.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

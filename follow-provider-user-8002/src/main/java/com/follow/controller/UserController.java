@@ -1,9 +1,9 @@
-package com.follow.controller;
+package com.follow.user.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.follow.entity.User;
-import com.follow.service.IUserService;
+import com.follow.user.service.IUserService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;

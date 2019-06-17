@@ -1,4 +1,4 @@
-package com.follow.service;
+package com.follow.user.service;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
