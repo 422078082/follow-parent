@@ -115,12 +115,7 @@ public class UserController {
     public ResponseData getOneUser(@PathVariable String id ){
 
         User user =iUserService.getById(id);
-        if(null ==user){
-                throw new RuntimeException("当前id："+id+"没有对应的信息");
-        }else{
-            ResponseData.success(user);
 
-        }
 
         return ResponseData.success();
 

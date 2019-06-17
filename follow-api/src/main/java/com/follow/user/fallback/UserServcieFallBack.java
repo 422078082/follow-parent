@@ -26,8 +26,8 @@ public class UserServcieFallBack implements UserServiceApi {
             }
 
             @Override
-            public User getOneUser(String id) {
-                return new User().setId(Integer.valueOf(id)).setUsername("没有这个用户##").setPassword("密码不能告诉你");
+            public ResponseData getOneUser(String id) {
+                 return DefaultFallBack.defaultFallBack();
             }
 
             @Override

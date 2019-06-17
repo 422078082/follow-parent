@@ -20,7 +20,7 @@ public interface UserServiceApi {
     public boolean insertUser(@RequestBody User user);
 
     @RequestMapping(value="/getOneUser/{id}",method = RequestMethod.GET)
-    public User getOneUser(@PathVariable("id") String id );
+    public ResponseData getOneUser(@PathVariable("id") String id );
 
   @GetMapping(value="/selectListPage")
    public ResponseData selectListPage(@RequestParam("pageNo") int pageNo ,@RequestParam("pageSize")  int pageSize);
