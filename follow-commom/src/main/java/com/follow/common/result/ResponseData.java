@@ -3,7 +3,7 @@ package com.follow.common.result;
 import lombok.Data;
 
 @Data
-public class ResponseData {
+public class ResponseData<T> {
 
     public static final String DEFAULT_SUCCESS_MESSAGE = "请求成功";
 

@@ -1,8 +1,9 @@
 package com.follow.user.api;
 
-import com.follow.entity.User;
+
 import com.follow.common.result.ResponseData;
 
+import com.follow.entity.UserVo;
 import com.follow.user.fallback.UserServcieFallBack;
 import io.swagger.annotations.ApiParam;
 
@@ -17,7 +18,7 @@ public interface UserServiceApi {
    @RequestMapping(value = "/selectList",method = RequestMethod.GET)
     public ResponseData selectList();
     @RequestMapping(value="/insertuser",method =RequestMethod.POST)
-    public boolean insertUser(@RequestBody User user);
+    public boolean insertUser(@RequestBody UserVo user);
 
     @RequestMapping(value="/getOneUser/{id}",method = RequestMethod.GET)
     public ResponseData getOneUser(@PathVariable("id") String id );

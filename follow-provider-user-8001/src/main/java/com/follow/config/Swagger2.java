@@ -1,4 +1,4 @@
-package com.follow.user.config;
+package com.follow.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

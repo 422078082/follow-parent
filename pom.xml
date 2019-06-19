@@ -46,6 +46,8 @@
       <feignhttpclient.version>10.2.0</feignhttpclient.version>
       <hystrix.version>1.4.6.RELEASE</hystrix.version>
       <gson.version>2.8.5</gson.version>
+      <jwt.version>0.9.1</jwt.version>
+      <redis.version>2.1.1.RELEASE</redis.version>
   </properties>
 
 
@@ -210,6 +212,20 @@
           <groupId>com.google.guava</groupId>
           <artifactId>guava</artifactId>
           <version>27.0.1-jre</version>
+        </dependency>
+
+
+        <!--jwt-->
+        <dependency>
+          <groupId>io.jsonwebtoken</groupId>
+          <artifactId>jjwt</artifactId>
+          <version>${jwt.version}</version>
+        </dependency>
+
+        <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-data-redis</artifactId>
+          <version>${redis.version}</version>
         </dependency>
 
       </dependencies>

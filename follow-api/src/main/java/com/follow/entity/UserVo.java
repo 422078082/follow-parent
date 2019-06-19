@@ -19,8 +19,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Data
 @Accessors(chain = true)
-@TableName("w_user")
-public class User implements Serializable {
+public class UserVo implements Serializable {
     /**
      * 主键
      */
@@ -41,7 +40,7 @@ public class User implements Serializable {
 
 
 public static void main(String args[]){
-    User user= new User();
+    UserVo user= new UserVo();
     user.setId(1).setPassword("1").setPassword("1");
 }
 }

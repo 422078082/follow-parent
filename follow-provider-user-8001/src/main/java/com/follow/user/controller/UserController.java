@@ -4,13 +4,16 @@ package com.follow.user.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.follow.entity.User;
+
 import com.follow.common.result.*;
+import com.follow.entity.UserVo;
+import com.follow.user.domain.User;
 import com.follow.user.service.IUserService;
 import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,7 +41,7 @@ public class UserController {
     public ResponseData selectList(){
        // SuccessResponseData success = new SuccessResponseData();
         QueryWrapper qw = new QueryWrapper();
-        return ResponseData.success(iUserService.selectList(qw));
+        return iUserService.selectList(qw);
     }
 
     @GetMapping(value="/selectListPage")
@@ -100,7 +103,9 @@ public class UserController {
     @ApiOperation(value = "插入用户信息",notes = "将用户名和用户的密码信息插入到数据库中")
     @RequestMapping(value="/insertUserBody1",method =RequestMethod.POST)
 
-    public ResponseResult insertUserBody1(@RequestBody User user){
+    public ResponseResult insertUserBody1(@RequestBody UserVo userVo){
+        User user = new User();
+        BeanUtils.copyProperties(userVo,user);
         boolean flag =iUserService.save(user);
         // ResponseResult result = new ResponseResult();
         if(flag){
@@ -121,10 +126,7 @@ public class UserController {
 
     }
 
-    public User get_Message(@PathVariable("id") String id){
 
-        return new User().setId(Integer.valueOf(id)).setUsername("没有这个用户").setPassword("密码不能告诉你");
-    }
 
 
     public ResponseData fallback(Throwable e) {

@@ -1,9 +1,10 @@
 package com.follow.user.fallback;
 
-import com.follow.entity.User;
+
 import com.follow.common.result.DefaultFallBack;
 import com.follow.common.result.ResponseData;
 
+import com.follow.entity.UserVo;
 import com.follow.user.api.UserServiceApi;
 
 import org.springframework.stereotype.Component;
@@ -21,7 +22,7 @@ public class UserServcieFallBack implements UserServiceApi {
             }
 
             @Override
-            public boolean insertUser(User user) {
+            public boolean insertUser(UserVo user) {
                 return false;
             }
 

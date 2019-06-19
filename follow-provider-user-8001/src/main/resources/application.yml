@@ -44,7 +44,7 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeout-in-milliseconds: 3000
+            timeout-in-milliseconds: 500000
       circuitBreaker:
         enabled: true #开启熔断器
         requestVolumeThreshold: 5 #触发熔断器的最小请求数
