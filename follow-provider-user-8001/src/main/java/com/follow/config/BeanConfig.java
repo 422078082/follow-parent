@@ -6,8 +6,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class BeanConfig {
-  /*  @Bean
+ @Bean
     public UserInfoFilter userInfoFilter() {
         return new UserInfoFilter();
-    }*/
+    }
 }

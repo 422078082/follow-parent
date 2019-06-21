@@ -11,11 +11,14 @@ import com.follow.user.enums.OriginEnum;
 import com.follow.user.enums.UserTypeEnum;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-
+@Component
 public class UserUtil {
 
     private static ThreadLocal<UserInfoVO> userInfo = new InheritableThreadLocal<>();
@@ -32,7 +35,9 @@ public class UserUtil {
         UserVo userVO = new UserVo();
         BeanUtils.copyProperties(user, userVO);
         String token = JwtTokenUtil.generateToken(String.valueOf(user.getId()), new HashMap<>());
+        System.out.println("redis 测试-----:"+String.valueOf(user.getId()));
         String userStr = redisUtil.get(String.valueOf(user.getId()));
+        System.out.println("redis 测试-----121:"+String.valueOf(user.getId()));
         if (StringUtils.isBlank(userStr)) {
             UserInfoVO userInfoVO = new UserInfoVO();
             userInfoVO.setUser(userVO);
@@ -60,6 +65,7 @@ public class UserUtil {
            // UserInfo.userType = userInfoVO.getType();
            // UserInfo.ip = ip;
         }
+        System.out.println("测试token-------:"+token);
         return token;
     }
 }

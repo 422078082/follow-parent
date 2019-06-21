@@ -29,6 +29,17 @@ spring:
       min-idle: 5
       initial-size: 5
       max-wait-millis: 200
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    timeout: 10000
+    jedis:
+      pool:
+        max-idle: 10
+        max-active: 8
+        min-idle: 5
+
 eureka:
   client:
     service-url:
@@ -50,13 +61,17 @@ hystrix:
         requestVolumeThreshold: 5 #触发熔断器的最小请求数
         sleepWindowInMilliseconds: 30000 #触发熔断器后的关闭时间
         errorThresholdPercentage: 50 #达到这个比例将关闭接口，直接走降级处理
-feign:
-  hystrix:
-    enabled: true #feign启用hystrix
-  httpclient:
-    enabled: true #使用httpclient
+
+logging:
+  level:
+    io.swagger.models.parameters.AbstractSerializableParameter: error
+    org.springframework.cloud.openfeign: info
+  config: classpath:logback-spring.xml
 info:
   app.name: follow-user-provider
   company.name: www.cht.com
   build.artifactId: $project.artifactId$
   build.version: $project.version$
+feign:
+  hystrix:
+    enabled: true

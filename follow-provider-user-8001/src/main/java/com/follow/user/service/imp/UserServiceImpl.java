@@ -15,6 +15,11 @@ import com.follow.user.mapper.UserMapper;
 import com.follow.common.result.ResponseData;
 import com.follow.user.service.IUserService;
 import com.follow.user.util.UserUtil;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
+import com.netflix.hystrix.exception.HystrixBadRequestException;
+import com.netflix.hystrix.exception.HystrixRuntimeException;
+import com.netflix.hystrix.exception.HystrixTimeoutException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,11 +45,11 @@ public class UserServiceImpl  extends ServiceImpl<UserMapper, User> implements I
 
     @Override
     public ResponseData login(String username, String password)  {
-
+        System.setProperty("java.net.preferIPv4Stack", "true");
                 QueryWrapper qw = new QueryWrapper();
                 qw.eq("username",username);
 
-           User user = baseMapper.selectOne(qw);
+                User user = baseMapper.selectOne(qw);
                 System.out.println("*****************="+user);
                 System.out.println(user.getUsername()+"****"+user.getPassword());
                 if(user == null){
@@ -58,13 +63,19 @@ public class UserServiceImpl  extends ServiceImpl<UserMapper, User> implements I
                 }
             //**
         // * UserPasswordLoginVO使用这个类
+        System.out.println("*******$$$$$="+OriginEnum.fromValue("3"));
+       // System.out.println("*******$$$$$="+OriginEnum.fromValue("3"));
+       // redisUtil.set("my","123456");
 
-                String token = UserUtil.saveUserInfo(user, OriginEnum.fromValue("3"), redisUtil,
-                        "");
-
+        String token = UserUtil.saveUserInfo(user, OriginEnum.fromValue("3"), redisUtil,
+                        "127.0.0.1");
+                System.out.println(token);
                 return ResponseData.success(token);
 
 
     }
-
+    public ResponseData fallback(String username,String password,Throwable e) {
+        e.printStackTrace();
+        return ResponseData.error("服务器繁忙，请稍后再试");
+    }
 }
