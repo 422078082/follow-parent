@@ -52,6 +52,20 @@
       <redisson.version>3.10.7</redisson.version>
   </properties>
 
+  <profiles>
+    <profile>
+      <id>dev</id>
+      <properties>
+        <project.snapshot.version>0.1</project.snapshot.version>
+      </properties>
+    </profile>
+    <profile>
+      <id>prod</id>
+      <properties>
+        <project.release.version>0.1</project.release.version>
+      </properties>
+    </profile>
+  </profiles>
 
  <!--<dependencies>
     <dependency>
@@ -250,7 +264,20 @@
       </dependencies>
 
   </dependencyManagement>
+  <!-- 项目部署到私服配置 -->
+  <distributionManagement> <!-- 远程部署管理信息 -->
+    <repository> <!--部署项目产生的构件到远程仓库需要的信息 -->
+      <id>releases</id>
+      <name>Nexus Release Repository</name>
+      <url>http://172.16.33.129:8083/repository/maven-releases/</url>
+    </repository>
 
+    <snapshotRepository> <!-- 如果没有配置该元素，默认部署到repository元素配置的仓库 -->
+      <id>snapshots</id>
+      <name>Nexus Snapshot Repository</name>
+      <url>http://172.16.33.129:8083/repository/maven-snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
 <build>
       <finalName>follow</finalName>
       <resources>
