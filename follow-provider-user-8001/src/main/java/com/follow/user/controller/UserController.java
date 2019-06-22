@@ -42,7 +42,8 @@ public class UserController {
     public ResponseData selectList(){
        // SuccessResponseData success = new SuccessResponseData();
         QueryWrapper qw = new QueryWrapper();
-        return iUserService.selectList(qw);
+
+        return ResponseData.success(iUserService.selectList(qw));
     }
 
     @GetMapping(value="/selectListPage")

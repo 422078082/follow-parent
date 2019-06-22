@@ -5,6 +5,15 @@ server:
 spring:
   application:
     name: MICROSESPRINGCLOUD-USER_COMSUMER
+  redis:
+    host: test.zykjct.com
+    port: 6379
+    timeout: 10000
+    jedis:
+      pool:
+        max-idle: 10
+        max-active: 8
+        min-idle: 5
 
 eureka:
   client:
@@ -12,6 +21,7 @@ eureka:
       defaultZone: http://www.cht7001.cn:7001/eureka/
   instance:
       prefer-ip-address:  true #显示IP的地址
+
 
 
 
@@ -37,7 +47,8 @@ zuul:
       path: /user-service/**
       serviceId: microsespringcloud-user
 
-
+TOKEN:
+  AGINGTIME: 12000 #单位为分
 
 
 
